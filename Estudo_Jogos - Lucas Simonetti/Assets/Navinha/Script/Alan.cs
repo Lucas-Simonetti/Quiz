@@ -26,6 +26,14 @@ public class Alan : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(GameManager.instancia.podeAlan == false)
+        {
+            velocidade = 0;
+        }
         corpoAlan.velocity = new Vector2(0, velocidade);
+        if (transform.position.y <= -6)
+        {
+            GameManager.instancia.gameOver = true;
+        }
     }
 }

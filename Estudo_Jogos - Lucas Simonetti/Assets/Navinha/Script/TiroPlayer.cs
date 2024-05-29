@@ -16,7 +16,7 @@ public class TiroBasico : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -33,6 +33,7 @@ public class TiroBasico : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Alan"))
         {
+            GameManager.instancia.score += 1;
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
