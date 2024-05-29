@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public float taxaAlan;
     public bool podeAlan = true;
 
+    [Header("PowerUp")]
+    public GameObject powerUp;
+
     [Header("Score")]
     public int score;
     public TMP_Text pontuacao;
@@ -48,6 +51,7 @@ public class GameManager : MonoBehaviour
             {
                 taxaAlan -= 0.2f;
                 scoreMax += 20;
+                powerUp.SetActive(true);
             }
         }
         if(gameOver == true)

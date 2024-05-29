@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
     public GameObject tiroPlayer;
     public Transform miraPlayer;
 
+    [Header("PowerUp")]
+    public GameObject powerUp;
+    public int tempoPowerUp = 10;
+
 
     private void Awake()
     {
@@ -106,6 +110,17 @@ public class Player : MonoBehaviour
         {
             GameManager.instancia.gameOver = true;
         }
+        if (collision.gameObject.CompareTag("PowerUp"))
+        {
+            StartCoroutine(PowerUp());
+            powerUp.SetActive(false);
+        }
     }
 
+    IEnumerator PowerUp()
+    {
+        taxaTiro = taxaTiro / 2;
+        yield return new WaitForSeconds(tempoPowerUp);
+        taxaTiro = taxaTiro * 2;
+    }
 }
