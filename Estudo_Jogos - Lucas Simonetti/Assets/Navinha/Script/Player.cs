@@ -79,6 +79,22 @@ public class Player : MonoBehaviour
             animatorPlayer.SetInteger("Player", 0);
         }
 
+        if(transform.position.y <= -6)
+        {
+            GameManager.instancia.gameOver = true;
+        }
+        if(transform.position.y >= 7)
+        {
+            GameManager.instancia.gameOver = true;
+        }
+        if (transform.position.x <= -7)
+        {
+            GameManager.instancia.gameOver = true;
+        }
+        if (transform.position.x >= 7)
+        {
+            GameManager.instancia.gameOver = true;
+        }
     }
 
     private void FixedUpdate()
@@ -110,11 +126,16 @@ public class Player : MonoBehaviour
         {
             GameManager.instancia.gameOver = true;
         }
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            GameManager.instancia.gameOver = true;
+        }
         if (collision.gameObject.CompareTag("PowerUp"))
         {
             StartCoroutine(PowerUp());
             powerUp.SetActive(false);
         }
+
     }
 
     IEnumerator PowerUp()

@@ -12,17 +12,19 @@ public class TiroBasico : MonoBehaviour
     [Header("Movimentação")]
     public float velocidade;
 
-
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(transform.position.y >= 7)
+        {
+            Destroy(gameObject);
+        }
     }
     private void FixedUpdate()
     {
@@ -36,6 +38,15 @@ public class TiroBasico : MonoBehaviour
             GameManager.instancia.score += 1;
             Destroy(collision.gameObject);
             Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            GameManager.instancia.vidaBoss -= 1;
+            Destroy(gameObject);
+            if(GameManager.instancia.vidaBoss == 0)
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 

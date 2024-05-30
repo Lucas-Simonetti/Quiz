@@ -28,6 +28,15 @@ public class GameManager : MonoBehaviour
     public bool gameOver = false;
     public GameObject painelGameOver;
 
+    [Header("Win")]
+    public bool winGame = false;
+    public GameObject painelWin;
+
+    [Header("Gerar Boss")]
+    public bool podeBoss = false;
+    public GameObject limiteAcima;
+    public int vidaBoss;
+
 
     private void Awake()
     {
@@ -39,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(GerarAlan());
         painelGameOver.SetActive(false);
+        painelWin.SetActive(false);
     }
 
     // Update is called once per frame
@@ -54,6 +64,14 @@ public class GameManager : MonoBehaviour
                 powerUp.SetActive(true);
             }
         }
+
+        if(score == 100)
+        {
+            podeBoss = true;
+            podeAlan = false;
+            limiteAcima.SetActive(false);
+        }
+
         if(gameOver == true)
         {
             GameOver();
@@ -62,6 +80,20 @@ public class GameManager : MonoBehaviour
                 StopAllCoroutines();
             }
 
+        }
+
+        if(vidaBoss == 0)
+        {
+            winGame = true;
+        }
+
+        if (winGame == true)
+        {
+            WinGame();
+            if (podeAlan == false)
+            {
+                StopAllCoroutines();
+            }
         }
     }
 
@@ -82,4 +114,15 @@ public class GameManager : MonoBehaviour
         Player.instancia.velocidade = 0;
         podeAlan = false;
     }
+
+    public void WinGame()
+    {
+        painelWin.SetActive(true);
+        Player.instancia.podeAtirar = false;
+        Player.instancia.podeMoverX = false;
+        Player.instancia.podeMoverY = false;
+        Player.instancia.velocidade = 0;
+        podeAlan = false;
+    }
+
 }

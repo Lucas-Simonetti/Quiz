@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5382791164305891763}
   - component: {fileID: 4735827955133648303}
   - component: {fileID: 5899225798118747370}
-  - component: {fileID: -1501468257531659108}
+  - component: {fileID: -8280253068052278966}
   m_Layer: 0
   m_Name: Player_donut_shot (16 x 16)_0
   m_TagString: Untagged
@@ -181,7 +181,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-1501468257531659108
+--- !u!114 &-8280253068052278966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

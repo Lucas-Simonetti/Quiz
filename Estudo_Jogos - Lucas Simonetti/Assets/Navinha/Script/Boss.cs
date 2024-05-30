@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Alan : MonoBehaviour
+public class Boss : MonoBehaviour
 {
 
+    public static Boss instancia;
+
     [Header("Componentes")]
-    public Rigidbody2D corpoAlan;
-    public BoxCollider2D colisorAlan;
+    public Rigidbody2D corpoBoss;
+    public BoxCollider2D colisorBoss;
 
     [Header("Movimentação")]
     public float velocidade;
-
 
     // Start is called before the first frame update
     void Start()
@@ -26,12 +27,11 @@ public class Alan : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(GameManager.instancia.podeAlan == false)
+        if (GameManager.instancia.podeBoss == true)
         {
-            velocidade = 0;
-            GameManager.instancia.taxaAlan = 10000;
+            velocidade = -0.5f;
         }
-        corpoAlan.velocity = new Vector2(0, velocidade);
+        corpoBoss.velocity = new Vector2(0, velocidade);
         if (transform.position.y <= -6)
         {
             GameManager.instancia.gameOver = true;
