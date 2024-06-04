@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         {
             podeBoss = true;
             podeAlan = false;
+            StopAllCoroutines();
             limiteAcima.SetActive(false);
         }
 

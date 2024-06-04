@@ -29,7 +29,6 @@ public class Alan : MonoBehaviour
         if(GameManager.instancia.podeAlan == false)
         {
             velocidade = 0;
-            GameManager.instancia.taxaAlan = 10000;
         }
         corpoAlan.velocity = new Vector2(0, velocidade);
         if (transform.position.y <= -6)
