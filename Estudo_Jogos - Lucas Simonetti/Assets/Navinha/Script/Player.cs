@@ -79,19 +79,7 @@ public class Player : MonoBehaviour
             animatorPlayer.SetInteger("Player", 0);
         }
 
-        if(transform.position.y <= -6)
-        {
-            GameManager.instancia.gameOver = true;
-        }
-        if(transform.position.y >= 7)
-        {
-            GameManager.instancia.gameOver = true;
-        }
-        if (transform.position.x <= -7)
-        {
-            GameManager.instancia.gameOver = true;
-        }
-        if (transform.position.x >= 7)
+        if(transform.position.y <= -6 || transform.position.y >= 7 || transform.position.x <= -7 || transform.position.x >= 7)
         {
             GameManager.instancia.gameOver = true;
         }
