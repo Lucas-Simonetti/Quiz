@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using OpenCover.Framework.Model;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,6 +38,9 @@ public class GameManager : MonoBehaviour
     public GameObject limiteAcima;
     public int vidaBoss;
 
+    [Header("Botão")]
+    public GameObject restartButton;
+
 
     private void Awake()
     {
@@ -49,6 +53,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GerarAlan());
         painelGameOver.SetActive(false);
         painelWin.SetActive(false);
+        restartButton.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -80,7 +86,7 @@ public class GameManager : MonoBehaviour
             {
                 StopAllCoroutines();
             }
-
+            restartButton.SetActive(true);
         }
 
         if(vidaBoss == 0)
@@ -95,6 +101,7 @@ public class GameManager : MonoBehaviour
             {
                 StopAllCoroutines();
             }
+            restartButton.SetActive(true);
         }
     }
 
@@ -124,6 +131,10 @@ public class GameManager : MonoBehaviour
         Player.instancia.podeMoverY = false;
         Player.instancia.velocidade = 0;
         podeAlan = false;
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }
