@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 150179752}
   - component: {fileID: 150179753}
   m_Layer: 0
-  m_Name: Player_ship (16 x 16)_1
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2282,7 +2282,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1255418015}
   m_Layer: 0
-  m_Name: Limites
+  m_Name: Limits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2723,7 +2723,7 @@ GameObject:
   - component: {fileID: 1438740519}
   - component: {fileID: 1438740518}
   m_Layer: 5
-  m_Name: "Pontua\xE7\xE3o"
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2860,7 +2860,7 @@ GameObject:
   - component: {fileID: 1515329181}
   - component: {fileID: 1515329182}
   m_Layer: 0
-  m_Name: Lips (16 x 16)_0
+  m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
