@@ -17,9 +17,6 @@ public class GameManager : MonoBehaviour
     public float taxaAlan;
     public bool podeAlan = true;
 
-    [Header("PowerUp")]
-    public GameObject powerUp;
-
     [Header("Score")]
     public int score;
     public TMP_Text pontuacao;
@@ -67,7 +64,6 @@ public class GameManager : MonoBehaviour
             {
                 taxaAlan -= 0.2f;
                 scoreMax += 20;
-                powerUp.SetActive(true);
             }
         }
 
@@ -79,29 +75,13 @@ public class GameManager : MonoBehaviour
             limiteAcima.SetActive(false);
         }
 
+        if(vidaBoss == 0)
+        {
+            WinGame();
+        }
         if(gameOver == true)
         {
             GameOver();
-            if (podeAlan == false)
-            {
-                StopAllCoroutines();
-            }
-            restartButton.SetActive(true);
-        }
-
-        if(vidaBoss == 0)
-        {
-            winGame = true;
-        }
-
-        if (winGame == true)
-        {
-            WinGame();
-            if (podeAlan == false)
-            {
-                StopAllCoroutines();
-            }
-            restartButton.SetActive(true);
         }
     }
 
@@ -121,6 +101,8 @@ public class GameManager : MonoBehaviour
         Player.instancia.podeMoverY = false;
         Player.instancia.velocidade = 0;
         podeAlan = false;
+        StopAllCoroutines();
+        restartButton.SetActive(true);
     }
 
     public void WinGame()
@@ -131,6 +113,8 @@ public class GameManager : MonoBehaviour
         Player.instancia.podeMoverY = false;
         Player.instancia.velocidade = 0;
         podeAlan = false;
+        StopAllCoroutines();
+        restartButton.SetActive(true);
     }
     public void RestartGame()
     {

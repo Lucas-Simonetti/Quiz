@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Navinha/Scene/Jogo da Navinha.unity
+    guid: f2439a1cd1221a548abec1ab8aedf6b1
   m_configObjects: {}
