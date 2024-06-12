@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
         painelGameplay.SetActive(false);
         painelGameOver.SetActive(false);
         Player.instancia.podeAtirar = false;
+        Player.instancia.podeMoverX = false;
+        Player.instancia.podeMoverY = false;
 
     }
 
@@ -57,6 +59,8 @@ public class GameManager : MonoBehaviour
         painelGameplay.SetActive(true);
         StartCoroutine(GerarAlan());
         Player.instancia.podeAtirar = true;
+        Player.instancia.podeMoverX = true;
+        Player.instancia.podeMoverY = true;
     }
 
     // Update is called once per frame
