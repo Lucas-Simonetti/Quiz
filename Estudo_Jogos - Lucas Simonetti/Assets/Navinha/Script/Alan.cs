@@ -14,6 +14,7 @@ public class Alan : MonoBehaviour
 
     [Header("Drop")]
     public GameObject powerUp;
+    public int chance;
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +42,8 @@ public class Alan : MonoBehaviour
 
     public void DroparItem()
     {
-        int rnd = Random.Range(0, 10);
-        if (rnd < 4)
+        int rnd = Random.Range(0, 100);
+        if (rnd < chance)
         {
             Instantiate(powerUp, transform.position, Quaternion.identity);
         }

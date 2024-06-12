@@ -197,3 +197,4 @@ MonoBehaviour:
   colisorAlan: {fileID: 6979459928219670101}
   velocidade: -1
   powerUp: {fileID: 7391445154400920683, guid: 3cab21c84eb405542b60b2de7ed42284, type: 3}
+  chance: 30

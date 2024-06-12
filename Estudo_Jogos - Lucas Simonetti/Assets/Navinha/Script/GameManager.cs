@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instancia;
 
+    [Header("Menu")]
+    public GameObject painelInicio;
+    public GameObject painelGameplay;
+    public GameObject painelGameOver;
+
     [Header("Gerador de Alan")]
     public GameObject objetoAlan;
     public Transform[] geradoresAlan;
@@ -24,19 +29,11 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Over")]
     public bool gameOver = false;
-    public GameObject painelGameOver;
-
-    [Header("Win")]
-    public bool winGame = false;
-    public GameObject painelWin;
 
     [Header("Gerar Boss")]
     public bool podeBoss = false;
     public GameObject limiteAcima;
     public int vidaBoss;
-
-    [Header("Botão")]
-    public GameObject restartButton;
 
 
     private void Awake()
@@ -47,11 +44,19 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(GerarAlan());
+        painelInicio.SetActive(true);
+        painelGameplay.SetActive(false);
         painelGameOver.SetActive(false);
-        painelWin.SetActive(false);
-        restartButton.SetActive(false);
+        Player.instancia.podeAtirar = false;
 
+    }
+
+    public void IniciarJogo()
+    {
+        painelInicio.SetActive(false);
+        painelGameplay.SetActive(true);
+        StartCoroutine(GerarAlan());
+        Player.instancia.podeAtirar = true;
     }
 
     // Update is called once per frame
@@ -75,10 +80,6 @@ public class GameManager : MonoBehaviour
             limiteAcima.SetActive(false);
         }
 
-        if(vidaBoss == 0)
-        {
-            WinGame();
-        }
         if(gameOver == true)
         {
             GameOver();
@@ -95,29 +96,20 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        painelGameOver.SetActive(true);
         Player.instancia.podeAtirar = false;
         Player.instancia.podeMoverX = false;
         Player.instancia.podeMoverY = false;
         Player.instancia.velocidade = 0;
         podeAlan = false;
-        StopAllCoroutines();
-        restartButton.SetActive(true);
+        StopCoroutine(GerarAlan());
+        StartCoroutine(FinalizarJogo());
     }
 
-    public void WinGame()
+    IEnumerator FinalizarJogo()
     {
-        painelWin.SetActive(true);
-        Player.instancia.podeAtirar = false;
-        Player.instancia.podeMoverX = false;
-        Player.instancia.podeMoverY = false;
-        Player.instancia.velocidade = 0;
-        podeAlan = false;
-        StopAllCoroutines();
-        restartButton.SetActive(true);
-    }
-    public void RestartGame()
-    {
+        painelGameplay.SetActive(false);
+        painelGameOver.SetActive(true);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

@@ -139,7 +139,6 @@ public class Player : MonoBehaviour
         if (collision.CompareTag("Alan"))
         {
             powerUp1Ativo = false;
-            collision.gameObject.GetComponent<Alan>().DroparItem();
             alansAtivos.Remove(collision.gameObject.GetComponent<Alan>());
             Destroy(collision.gameObject);
             vidaAtual--;
@@ -161,7 +160,7 @@ public class Player : MonoBehaviour
                 podePower2 = true;
                 Destroy(collision.gameObject);
             }
-            if (collision.gameObject.GetComponent<PowerUp>().tipo == 1)
+            if (collision.gameObject.GetComponent<PowerUp>().tipo == 2)
             {
                 vidaMaxima++;
                 vidaAtual = vidaMaxima;
